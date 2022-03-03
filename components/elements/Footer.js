@@ -1,13 +1,13 @@
 import styled from "styled-components";
-import {checkLanguage, language} from "../../constants/language";
-import {useRouter} from "next/router";
 import Link from "next/link"
 import {colors} from "../../styles/parameters";
 import {CompanyLogo} from "./Navbar";
 import {SiNextdotjs} from "react-icons/si";
+import {useDictionary} from "../../functions/detectLanguage";
+import {motion} from "framer-motion";
 
 
-const FooterBackground = styled.footer`
+const FooterBackground = styled(motion.footer)`
   background: #fafafa;
   border-top: 1px solid #eaeaea;
 `
@@ -90,30 +90,27 @@ const LanguageLink = ({active, location, lang, children}) => {
   )
 }
 
-const Footer = () => {
-  const data = language.footer
-  const router = useRouter()
-
-  const lang = checkLanguage(router.asPath.split("/")[-1])
+const Footer = ({router}) => {
+  const {data, lang} = useDictionary(router)
+  const dictionary = data.footer
 
   return (
     <FooterBackground>
       <FooterContainer>
         <InfoContainer>
-          {data.info_section.map(({title, links}, key) => (
+          {dictionary.info.map(({title, links}, key) => (
             <Section key={key}>
-              <Header>{title(lang)}</Header>
+              <Header>{title}</Header>
               <TextContainer>
                 {links.map(({text, link}, index) => {
-                  if (link === "special-ru" || link === "special-en") {
-                    const current_lang = link.split("-")[1]
-                    console.log(lang, current_lang, lang === current_lang)
+                  if (link === "lang_ru" || link === "lang_en") {
+                    const current_lang = link.split("_")[1] === "ru" ? "" : link.split("_")[1]
                     const active = lang === current_lang
                     return <LanguageLink key={index} active={active} location={router.asPath} lang={current_lang}>
-                      {text(lang)}
+                      {text}
                     </LanguageLink>
                   } else {
-                    return <Text href={link} key={index}>{text(lang)}</Text>
+                    return <Text href={link} key={index}>{text}</Text>
                   }
                 })}
               </TextContainer>
@@ -128,8 +125,11 @@ const Footer = () => {
           <BottomText>Coded with {" "}
             <BottomLink href="//nextjs.org" target="_blank">
               <SiNextdotjs/>
-            </BottomLink> by {" "}
-            <BottomLink href="//github.com/ParzivalEugene" target="_blank">
+            </BottomLink> and {" "}
+            <BottomLink>
+
+            </BottomLink>by {" "}
+            <BottomLink href="//www.michkoff.com" target="_blank">
               ParzivalEugene
             </BottomLink>
           </BottomText>

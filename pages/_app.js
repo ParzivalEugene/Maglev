@@ -8,16 +8,16 @@ import {MainVariants} from "../FramerVariants/common";
 function Website({ Component, pageProps, router }) {
   return (
     <AnimatePresence exitBeforeAfter router={router}>
-      <Navbar />
+      <Navbar router={router}/>
       <motion.div
         variants={MainVariants}
         initial="hidden"
         animate="visible"
         exit="exit"
       >
-        <Component {...pageProps} key={router.route}/>
+        <Component {...pageProps} key={router.route} router={router}/>
       </motion.div>
-      <Footer />
+      <Footer router={router}/>
     </AnimatePresence>
   )
 }

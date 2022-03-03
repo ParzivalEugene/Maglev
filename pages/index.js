@@ -1,10 +1,9 @@
-import {useRouter} from "next/router";
-import {useEffect} from "react";
+import Hero from "../components/main/Hero";
 
-export default function Home() {
-  const router = useRouter()
-  useEffect(() => {
-    router.push("/ru")
-  })
-  return <></>
+export default function Home({router}) {
+  return (
+    <>
+      <Hero router={router}/>
+    </>
+  )
 }

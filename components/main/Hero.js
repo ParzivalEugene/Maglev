@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import {language} from "../../constants/language";
-import {motion} from "framer-motion";
+import {useDictionary} from "../../functions/detectLanguage";
 
 
 const Container = styled.div`
@@ -27,33 +26,20 @@ const Text = styled.p`
   font-weight: 400;
 `
 
-const Hero = ({lang}) => {
-  const data = language.main.hero
+const Hero = ({router}) => {
+  const {data} = useDictionary(router)
+  const dictionary = data.main.hero
+
   return (
     <Container>
-        <InfoContainer>
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={{
-              hidden: {
-                scale: .8,
-                opacity: 0
-              },
-              visible: {
-                scale: 1,
-                opacity: 1,
-                transition: {
-                  delay: .4
-                }
-              }
-            }}
-          >
-            <Title>{data.title(lang)}</Title>
-          </motion.div>
-          <Text>{data.paragraphs.one(lang)}</Text>
-          <Text>{data.paragraphs.two(lang)}</Text>
-        </InfoContainer>
+      <InfoContainer>
+        <Title>{dictionary.title}</Title>
+        <>
+          {dictionary.paragraphs.map((text, index) => (
+            <Text key={index}>{text}</Text>
+          ))}
+        </>
+      </InfoContainer>
     </Container>
   );
 };

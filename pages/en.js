@@ -1,14 +1,9 @@
 import Hero from "../components/main/Hero";
 
-
-const En = () => {
-  const lang = "en"
-
+export default function En({router}) {
   return (
     <>
-      <Hero lang={lang}/>
+      <Hero router={router}/>
     </>
-  );
-};
-
-export default En;
+  )
+}

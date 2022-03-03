@@ -1,243 +1,206 @@
-export const checkLanguage = (lang) => {
-  if (language.languages.includes(lang)) {
-    return lang
-  }
-  return "ru"
-}
-
-
-export const language = {
-  languages: ["ru", "en"],
-  navbar: {
-    tabs: {
-      about: {
-        text: function (lang) {
-          const text = {
-            ru: "О проекте",
-            en: "About"
-          }
-          return lang === "ru" ? text.ru : text.en
+export const dictionary = {
+  ru: {
+    navbar: {
+      tabs: {
+        about: {
+          text: "О проекте",
+          link: "/about/"
         },
-        link: "/about/"
+        team: {
+          text: "Команда",
+          link: "/team/"
+        },
+        docs: {
+          text: "Документация",
+          link: "/docs/"
+        }
       },
-      team: {
-        text: function (lang) {
-          const text = {
-            ru: "Команда",
-            en: "Team"
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
-        link: "/team/"
-      },
-      docs: {
-        text: function (lang) {
-          const text = {
-            ru: "Документация",
-            en: "Documentation"
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
-        link: "/docs/"
+      button: {
+        text: "Спонсировать",
+        link: ""
       }
     },
-    button: {
-      text: function (lang) {
-        const text = {
-          ru: "Спонсировать",
-          en: "Sponsor"
-        }
-        return lang === "ru" ? text.ru : text.en
-      },
-      link: ""
-    }
-  },
-  footer: {
-    info_section: [
-      {
-        title: function (lang) {
-          const text = {
-            ru: "Информация о проекте",
-            en: "Project information"
-          }
-          return lang === "ru" ? text.ru : text.en
+
+    footer: {
+      info: [
+        {
+          title: "Информация о проекте",
+          links: [
+            {
+              text: "Исследования",
+              link: ""
+            },
+            {
+              text: "Документация",
+              link: ""
+            },
+            {
+              text: "Расчеты",
+              link: ""
+            },
+          ]
         },
-        links: [
-          {
-            text: function (lang) {
-              const text = {
-                ru: "Исследования",
-                en: "Researches"
-              }
-              return lang === "ru" ? text.ru : text.en
+        {
+          title: "Ресурсы",
+          links: [
+            {
+              text: "Google.Drive",
+              link: ""
             },
-            link: ""
-          },
-          {
-            text: function (lang) {
-              const text = {
-                ru: "Документация",
-                en: "Documentation"
-              }
-              return lang === "ru" ? text.ru : text.en
+            {
+              text: "GitHub",
+              link: ""
+            }
+          ]
+        },
+        {
+          title: "Как с нами связаться",
+          links: [
+            {
+              text: "michkov.eugene@gmail.com",
+              link: "mailto:michkov.eugene@gmail.com"
             },
-            link: ""
-          },
-          {
-            text: function (lang) {
-              const text = {
-                ru: "Расчеты",
-                en: "Calculation"
-              }
-              return lang === "ru" ? text.ru : text.en
+            {
+              text: "harser@gmail.com",
+              link: "mailto:harser@gmail.com"
             },
-            link: ""
-          }
+          ]
+        },
+        {
+          title: "Помощь проекту",
+          links: [
+            {
+              text: "Дать монету",
+              link: ""
+            }
+          ]
+        },
+        {
+          title: "Язык / Language",
+          links: [
+            {
+              text: "Русский",
+              link: "lang_ru"
+            },
+            {
+              text: "English",
+              link: "lang_en"
+            },
+          ]
+        },
+      ]
+    },
+
+    main: {
+      hero: {
+        title: "Магнитная Левитационная Технология",
+        paragraphs: [
+          "Революция в мире общественного транспорта и транспортных технологий",
+          "Проект, открывающий дверь в будущее человечества."
         ]
-      },
-      {
-        title: function (lang) {
-          const text = {
-            ru: "Ресурcы",
-            en: "Resources"
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
-        links: [
-          {
-            text: function (lang) {
-              const text = {
-                ru: "Google.Drive",
-                en: "Google.Drive"
-              }
-              return lang === "ru" ? text.ru : text.en
-            },
-            link: ""
-          },
-          {
-            text: function (lang) {
-              const text = {
-                ru: "GitHub",
-                en: "GitHub"
-              }
-              return lang === "ru" ? text.ru : text.en
-            },
-            link: ""
-          },
-        ]
-      },
-      {
-        title: function (lang) {
-          const text = {
-            ru: "Связь с командой",
-            en: "Contacts"
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
-        links: [
-          {
-            text: function (lang) {
-              const text = {
-                ru: "michkov.eugene@gmail.com",
-                en: "michkov.eugene@gmail.com"
-              }
-              return lang === "ru" ? text.ru : text.en
-            },
-            link: "mailto:michkov.eugene@gmail.com"
-          },
-          {
-            text: function (lang) {
-              const text = {
-                ru: "harser@gmail.com",
-                en: "harser@gmail.com"
-              }
-              return lang === "ru" ? text.ru : text.en
-            },
-            link: "mailto:harser@gmail.com"
-          },
-        ]
-      },
-      {
-        title: function (lang) {
-          const text = {
-            ru: "Спонсорство",
-            en: "Sponsorship"
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
-        links: [
-          {
-            text: function (lang) {
-              const text = {
-                ru: "Поддержать проект",
-                en: "Support project"
-              }
-              return lang === "ru" ? text.ru : text.en
-            },
-            link: ""
-          }
-        ]
-      },
-      {
-        title: function (lang) {
-          const text = {
-            ru: "Язык / Language",
-            en: "Язык / Language"
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
-        links: [
-          {
-            text: function (lang) {
-              const text = {
-                ru: "Русский",
-                en: "Русский"
-              }
-              return lang === "ru" ? text.ru : text.en
-            },
-            link: "special-ru"
-          },
-          {
-            text: function (lang) {
-              const text = {
-                ru: "English",
-                en: "English"
-              }
-              return lang === "ru" ? text.ru : text.en
-            },
-            link: "special-en"
-          }
-        ]
-      },
-    ]
-  },
-  main: {
-    hero: {
-      title: function (lang) {
-        const text = {
-          ru: "Магнитная Левитационная Технология",
-          en: "Magnetic Levitation Technology"
-        }
-        return lang === "ru" ? text.ru : text.en
-      },
-      paragraphs: {
-        one: function (lang) {
-          const text = {
-            ru: "Революция в мире общественного транспорта и трансортных " +
-              "технологий.",
-            en: "A revolution in the world of public transport and transport " +
-              "technologies."
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
-        two: function (lang) {
-          const text = {
-            ru: "Проект, открывающий дверь в будущее человечества.",
-            en: "A project that opens the door to the future of humanity."
-          }
-          return lang === "ru" ? text.ru : text.en
-        },
       }
     }
-  }
+  },
+  en: {
+    navbar: {
+      tabs: {
+        about: {
+          text: "About",
+          link: "/about/"
+        },
+        team: {
+          text: "Team",
+          link: "/team/"
+        },
+        docs: {
+          text: "Documentation",
+          link: "/docs/"
+        }
+      },
+      button: {
+        text: "Sponsor Us",
+        link: ""
+      }
+    },
+
+    footer: {
+      info: [
+        {
+          title: "Project information",
+          links: [
+            {
+              text: "Researches",
+              link: ""
+            },
+            {
+              text: "Documentation",
+              link: ""
+            },
+            {
+              text: "Calculation",
+              link: ""
+            },
+          ]
+        },
+        {
+          title: "Resources",
+          links: [
+            {
+              text: "Google.Drive",
+              link: ""
+            },
+            {
+              text: "GitHub",
+              link: ""
+            }
+          ]
+        },
+        {
+          title: "Contacts",
+          links: [
+            {
+              text: "michkov.eugene@gmail.com",
+              link: "mailto:michkov.eugene@gmail.com"
+            },
+            {
+              text: "harser@gmail.com",
+              link: "mailto:harser@gmail.com"
+            },
+          ]
+        },
+        {
+          title: "Sponsorship",
+          links: [
+            {
+              text: "Support project",
+              link: ""
+            }
+          ]
+        },
+        {
+          title: "Язык / Language",
+          links: [
+            {
+              text: "Русский",
+              link: "lang_ru"
+            },
+            {
+              text: "English",
+              link: "lang_en"
+            },
+          ]
+        },
+      ]
+    },
+
+    main: {
+      hero: {
+        title: "Magnetic Levitation Technology",
+        paragraphs: [
+          "A revolution in the world of public transport and transport technologies",
+          "A project that opens the door to the future of humanity."
+        ]
+      }
+    }
+  },
 }
