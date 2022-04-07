@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import {useDictionary} from "../../functions/detectLanguage";
+import {colors} from "../../styles/parameters";
+import {motion} from "framer-motion";
 
-
-const Container = styled.div`
+const Container = styled(motion.div)`
   max-width: 1280px;
   margin: 0 auto;
   padding: 16rem 4rem;
@@ -10,25 +10,24 @@ const Container = styled.div`
   grid-template-columns: 5.5fr 4.5fr;
 `
 
-const InfoContainer = styled.div`
+const InfoContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 4rem;
 `
 
-const Title = styled.h1`
+const Title = styled(motion.h1)`
   font-size: 7.2rem;
   font-weight: 800;
 `
 
-const Text = styled.p`
+const Text = styled(motion.p)`
   font-size: 2.4rem;
   font-weight: 400;
 `
 
-const Hero = ({router}) => {
-  const {data} = useDictionary(router)
-  const dictionary = data.main.hero
+const Hero = ({ translate }) => {
+  const dictionary = translate.main.hero
 
   return (
     <Container>

@@ -5,15 +5,19 @@ body {
   font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   font-size: 10px;
+  background: #000804;
 }
 
 h1,
 h2,
 h3,
 h4,
-h5,
+h5 {
+  color: #fffffe;
+}
+
 p {
-  color: #111;
+  color: rgba(255,255,254,0.5)
 }
 
 a {

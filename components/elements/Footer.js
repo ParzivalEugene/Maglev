@@ -2,14 +2,13 @@ import styled from "styled-components";
 import Link from "next/link"
 import {colors} from "../../styles/parameters";
 import {CompanyLogo} from "./Navbar";
-import {SiNextdotjs} from "react-icons/si";
-import {useDictionary} from "../../functions/detectLanguage";
+import {SiNextdotjs, SiThreedotjs} from "react-icons/si";
 import {motion} from "framer-motion";
 
 
 const FooterBackground = styled(motion.footer)`
-  background: #fafafa;
-  border-top: 1px solid #eaeaea;
+  background: ${colors.light_background};
+  //border-top: 1px solid ${colors.blue};
 `
 
 const FooterContainer = styled.div`
@@ -22,6 +21,8 @@ const FooterContainer = styled.div`
   align-items: stretch;
   position: relative;
   gap: 8rem;
+  
+  color: ${colors.main};
 `
 
 const InfoContainer = styled.div`
@@ -50,22 +51,22 @@ const TextContainer = styled.div`
 const SectionLink = styled.a`
   font-size: 1.6rem;
   font-weight: 400;
-  color: ${({active}) => (active ? colors.text.primary : colors.text.secondary)};
+  color: ${({active}) => (active ? colors.main : colors.sub)};
   transition: .2s all ease-in-out;
   
   &:hover {
-    color: ${colors.text.primary};
+    color: ${colors.main};
   }
 `
 
 const BottomText = styled.p`
   font-size: 1.6rem;
   font-weight: 400;
-  color: ${colors.text.secondary};
+  color: ${colors.main};
 `
 
 const BottomLink = styled.a`
-  color: ${colors.text.primary};
+  color: ${colors.main};
   font-weight: 500;
 `
 
@@ -81,18 +82,16 @@ const Text = ({children, href}) => {
   )
 }
 
-const LanguageLink = ({active, location, lang, children}) => {
-  const new_link = location.slice(0, -2) + lang
+const LanguageLink = ({active, lang, children}) => {
   return (
-    <Link href={new_link} passHref>
+    <Link href={"/"} locale={lang} passHref>
         <SectionLink active={active}>{children}</SectionLink>
     </Link>
   )
 }
 
-const Footer = ({router}) => {
-  const {data, lang} = useDictionary(router)
-  const dictionary = data.footer
+const Footer = ({ router, translate, locale }) => {
+  const dictionary = translate.footer
 
   return (
     <FooterBackground>
@@ -104,9 +103,9 @@ const Footer = ({router}) => {
               <TextContainer>
                 {links.map(({text, link}, index) => {
                   if (link === "lang_ru" || link === "lang_en") {
-                    const current_lang = link.split("_")[1] === "ru" ? "" : link.split("_")[1]
-                    const active = lang === current_lang
-                    return <LanguageLink key={index} active={active} location={router.asPath} lang={current_lang}>
+                    const lang = link.slice(5, 7)
+                    const active = locale === lang
+                    return <LanguageLink key={index} active={active} lang={lang}>
                       {text}
                     </LanguageLink>
                   } else {
@@ -118,7 +117,7 @@ const Footer = ({router}) => {
           ))}
         </InfoContainer>
         <InfoContainer>
-          <Link href={"/" + lang} passHref>
+          <Link href={"/" + locale} passHref>
             <CompanyLogo>MaglevName</CompanyLogo>
           </Link>
           <BottomText>© 2022 MaglevName. All rights reserved.</BottomText>
@@ -126,9 +125,9 @@ const Footer = ({router}) => {
             <BottomLink href="//nextjs.org" target="_blank">
               <SiNextdotjs/>
             </BottomLink> and {" "}
-            <BottomLink>
-
-            </BottomLink>by {" "}
+            <BottomLink href="//threejs.org" target="_blank">
+              <SiThreedotjs/>
+            </BottomLink> by {" "}
             <BottomLink href="//www.michkoff.com" target="_blank">
               ParzivalEugene
             </BottomLink>
