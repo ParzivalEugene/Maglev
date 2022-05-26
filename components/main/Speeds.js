@@ -7,7 +7,7 @@ import {colors} from "../../styles/parameters";
 const Container = styled(motion.div)`
   max-width: 1280px;
   margin: 0 auto;
-  padding: 16rem 4rem;
+  padding: 0 4rem 16rem;
   
   display: flex;
   flex-direction: column;
@@ -43,8 +43,6 @@ const DistanceLabel = styled(motion.label)`
   font-size: 2.4rem;
   color: ${colors.sub};
   cursor: pointer;
-  transition: .2s ease-in-out;
-  border: .1rem solid ${colors.light_background};
   
   padding: 2rem;
   background: ${colors.light_background};
@@ -95,7 +93,7 @@ const ChartFullLine = styled.div`
 
 const ChartCurrentLine = styled.div`
   height: 100%;
-  background: ${colors.green};
+  background: ${({special}) => (special ? colors.blue : colors.green)};
   border-radius: 1rem;
   width: ${({width}) => (width)}%;
 `
@@ -134,7 +132,8 @@ const Speeds = ({ translate }) => {
   ]
 
   const createChartVelocity = (velocity) => {
-    return (distance / velocity) / (distance / velocities.car) * 100
+    // return (distance / velocity) / (distance / velocities.car) * 100
+    return (distance / velocity) / (Math.ceil(distance / velocities.car / 200) * 200) * 100
   }
 
   const createChartTime = (velocity) => {
@@ -143,7 +142,7 @@ const Speeds = ({ translate }) => {
 
   return (
     <Container>
-      <Header><mark>{dictionary.header_mark}</mark> {dictionary.header}</Header>
+      <Header>{dictionary.header_mark} {dictionary.header}</Header>
 
       <DistanceContainer>
         <SubHeader>{dictionary.sub_header}</SubHeader>
